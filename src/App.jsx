@@ -54,7 +54,7 @@ function App() {
 
   return (
     <div style={{ padding: 40 }}>
-      <h1>Welcome, {user.email}</h1>
+      <h1>Hello, Welcome, {user.email}</h1>
       <button onClick={logout}>Logout</button>
     </div>
   );
