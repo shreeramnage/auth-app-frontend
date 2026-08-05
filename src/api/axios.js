@@ -6,7 +6,8 @@ let accessToken = null;
 export const setAccessToken = (token) => { accessToken = token; };
 
 export const api = axios.create({
-  baseURL: 'http://localhost:4000/api',
+  // baseURL: 'http://localhost:4000/api',
+  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:4000/api',
   withCredentials: true,  // lets the refresh cookie travel cross-origin
 });
 
