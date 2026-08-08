@@ -59,7 +59,7 @@ function App() {
 
   return (
     <div style={{ padding: 40 }}>
-      <h1>Hello, Welcome, {user.email} V8</h1>
+      <h1>Hello, Welcome, {user.email} V9</h1>
       <button onClick={logout}>Logout</button>
       <button style={{marginLeft: "10px"}} onClick={getProfile}>Get Profile</button>
     </div>
