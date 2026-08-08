@@ -34,11 +34,16 @@
 
 import { useState } from 'react';
 import { useAuth } from './context/AuthContext';
+import { api } from './api/axios';
 
 function App() {
   const { user, loading, login, logout } = useAuth();
   const [email, setEmail] = useState('demo@test.com');
   const [password, setPassword] = useState('secret123');
+
+  const getProfile = async () => {
+    await api.get('/auth/me');
+  }
 
   // The 3-state pattern: unknown → known-out → known-in
   if (loading) return <p>Loading...</p>;
@@ -54,8 +59,9 @@ function App() {
 
   return (
     <div style={{ padding: 40 }}>
-      <h1>Hello, Welcome, {user.email}</h1>
+      <h1>Hello, Welcome, {user.email} V6</h1>
       <button onClick={logout}>Logout</button>
+      <button style={{marginLeft: "10px"}} onClick={getProfile}>Get Profile</button>
     </div>
   );
 }
