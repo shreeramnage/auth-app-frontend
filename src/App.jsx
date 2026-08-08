@@ -32,37 +32,26 @@
 // export default App;
 
 
-import { useState } from 'react';
 import { useAuth } from './context/AuthContext';
-import { api } from './api/axios';
+import Login from './components/Login';
+import React from 'react';
+
+const Dashboard = React.lazy(() => import("./components/Dashboard"))
 
 function App() {
-  const { user, loading, login, logout } = useAuth();
-  const [email, setEmail] = useState('demo@test.com');
-  const [password, setPassword] = useState('secret123');
+  const { user, loading } = useAuth();
 
-  const getProfile = async () => {
-    await api.get('/auth/me');
-  }
+
 
   // The 3-state pattern: unknown → known-out → known-in
   if (loading) return <p>Loading...</p>;
 
   if (!user) return (
-    <div style={{ padding: 40 }}>
-      <h1>Login</h1>
-      <input value={email} onChange={(e) => setEmail(e.target.value)} />
-      <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <button onClick={() => login(email, password)}>Login</button>
-    </div>
+    <Login />
   );
 
   return (
-    <div style={{ padding: 40 }}>
-      <h1>Hello, Welcome, {user.email} V10</h1>
-      <button onClick={logout}>Logout</button>
-      <button style={{marginLeft: "10px"}} onClick={getProfile}>Get Profile</button>
-    </div>
+    <Dashboard />
   );
 }
 
