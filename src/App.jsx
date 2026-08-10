@@ -43,7 +43,7 @@ const Settings = React.lazy(() => import("./components/Settings"))
 const Users = React.lazy(() => import("./components/Users"))
 
 function App() {
-  const { user, loading } = useAuth();
+  const { loading, isAuthenticated } = useAuth();
 
 
 
@@ -61,9 +61,9 @@ function App() {
     <BrowserRouter>
       <Suspense fallback="<p>Loading...</p>">
         <Routes>
-          <Route path='/' element={user ? <Dashboard/> : <Login />} />
-          <Route path='/settings' element={user ? <Settings/> : <Login />} />
-          <Route path='/users' element={user ? <Users/> : <Login />} />
+          <Route path='/' element={isAuthenticated ? <Dashboard/> : <Login />} />
+          <Route path='/settings' element={isAuthenticated ? <Settings/> : <Login />} />
+          <Route path='/users' element={isAuthenticated ? <Users/> : <Login />} />
         </Routes>
       </Suspense>
     </BrowserRouter>
