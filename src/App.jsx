@@ -34,7 +34,7 @@
 
 import { useAuth } from './context/AuthContext';
 import Login from './components/Login';
-import React from 'react';
+import React, { Suspense } from 'react';
 
 const Dashboard = React.lazy(() => import("./components/Dashboard"))
 
@@ -51,7 +51,9 @@ function App() {
   );
 
   return (
-    <Dashboard />
+    <Suspense fallback="I am fallback">
+      <Dashboard />
+    </Suspense>
   );
 }
 
