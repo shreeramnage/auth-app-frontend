@@ -7,6 +7,7 @@ export default function Dashboard() {
         await api.get('/auth/me');
     }
     return (<div style={{ padding: 40 }}>
+        <img src="../assets/batsy.jpg" alt="batman" width={"300"} height={"300"} />
         <h1>Hello, Welcome, {user.email} V10</h1>
         <button onClick={logout}>Logout</button>
         <button style={{ marginLeft: "10px" }} onClick={getProfile}>Get Profile</button>
