@@ -40,6 +40,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 const Dashboard = React.lazy(() => import("./components/Dashboard"))
 const Settings = React.lazy(() => import("./components/Settings"))
+const Users = React.lazy(() => import("./components/Users"))
 
 function App() {
   const { user, loading } = useAuth();
@@ -62,6 +63,7 @@ function App() {
         <Routes>
           <Route path='/' element={user ? <Dashboard/> : <Login />} />
           <Route path='/settings' element={user ? <Settings/> : <Login />} />
+          <Route path='/users' element={user ? <Users/> : <Login />} />
         </Routes>
       </Suspense>
     </BrowserRouter>
