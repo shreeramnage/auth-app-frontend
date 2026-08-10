@@ -35,6 +35,8 @@
 import { useAuth } from './context/AuthContext';
 import Login from './components/Login';
 import React, { Suspense } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Settings from './components/Settings';
 
 const Dashboard = React.lazy(() => import("./components/Dashboard"))
 
@@ -46,14 +48,20 @@ function App() {
   // The 3-state pattern: unknown → known-out → known-in
   if (loading) return <p>Loading...</p>;
 
-  if (!user) return (
-    <Login />
-  );
+  // if (!user) return (
+  //   <Login />
+  // );
 
   return (
-    <Suspense fallback="I am fallback">
-      <Dashboard />
-    </Suspense>
+    // <Suspense fallback="I am fallback">
+    //   <Dashboard />
+    // </Suspense>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={user ? <Dashboard/> : <Login />} />
+        <Route path='/settings' element={user ? <Settings/> : <Login />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
