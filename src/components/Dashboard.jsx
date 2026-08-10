@@ -13,7 +13,7 @@ export default function Dashboard() {
         <Link to={"/users"}>Users</Link>
         <img src={batsy} alt="batman" width={"300"} height={"300"} />
         <h1>Hello, Welcome, {user.email} V10</h1>
-        <button onClick={logout}>Logout</button>
+        {/* <button onClick={logout}>Logout</button> */}
         <button style={{ marginLeft: "10px" }} onClick={getProfile}>Get Profile</button>
     </div>)
 }
