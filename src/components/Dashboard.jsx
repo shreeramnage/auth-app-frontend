@@ -10,6 +10,7 @@ export default function Dashboard() {
     }
     return (<div style={{ padding: 40 }}>
         <Link to={"/settings"} >Settings</Link>
+        <Link to={"/users"}>Users</Link>
         <img src={batsy} alt="batman" width={"300"} height={"300"} />
         <h1>Hello, Welcome, {user.email} V10</h1>
         <button onClick={logout}>Logout</button>
