@@ -36,9 +36,10 @@ import { useAuth } from './context/AuthContext';
 import Login from './components/Login';
 import React, { Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Settings from './components/Settings';
+// import Settings from './components/Settings';
 
 const Dashboard = React.lazy(() => import("./components/Dashboard"))
+const Settings = React.lazy(() => import("./components/Settings"))
 
 function App() {
   const { user, loading } = useAuth();
@@ -57,10 +58,12 @@ function App() {
     //   <Dashboard />
     // </Suspense>
     <BrowserRouter>
-      <Routes>
-        <Route path='/' element={user ? <Dashboard/> : <Login />} />
-        <Route path='/settings' element={user ? <Settings/> : <Login />} />
-      </Routes>
+      <Suspense fallback="<p>Loading...</p>">
+        <Routes>
+          <Route path='/' element={user ? <Dashboard/> : <Login />} />
+          <Route path='/settings' element={user ? <Settings/> : <Login />} />
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 }
